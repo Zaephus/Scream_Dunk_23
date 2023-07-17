@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 154232833
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5bf5e8ba3a9e2704ea6a3522e3318452, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -268,7 +268,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 154232833
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5bf5e8ba3a9e2704ea6a3522e3318452, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -332,8 +332,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rateOfChange: 0
   rotateForceModifier: 1000
-  force: {x: 0, y: 0}
-  disc: {fileID: 8486230287502891658}
+  releaseForce: 45
+  forceSlider: {fileID: 0}
 --- !u!50 &4217751915699460036
 Rigidbody2D:
   serializedVersion: 4

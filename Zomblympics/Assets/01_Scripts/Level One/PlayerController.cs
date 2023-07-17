@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace LevelOne {
 
@@ -12,10 +13,11 @@ namespace LevelOne {
         [SerializeField]
         private float rotateForceModifier = 10.0f;
 
-        public Vector2 force;
+        [SerializeField]
+        private float releaseForce = 45.0f;
 
         [SerializeField]
-        private GameObject disc;
+        private Slider forceSlider;
 
         private Rigidbody2D body;
         private FixedJoint2D joint;
@@ -23,17 +25,19 @@ namespace LevelOne {
         private void Start() {
             body = GetComponent<Rigidbody2D>();
             joint = GetComponent<FixedJoint2D>();
+            joint.breakForce = releaseForce;
         }
 
         private void Update() {
-            RotatePlayer();
-            if(joint != null) {
-                force = joint.reactionForce;
-                Debug.Log(force.magnitude);
+
+            if(joint != null && joint.isActiveAndEnabled) {
+                forceSlider.value = joint.reactionForce.magnitude / ((releaseForce / 7) * 8);
+                RotatePlayer();
             }
 
             if(Input.GetMouseButtonDown(0)) {
                 joint.enabled = false;
+                forceSlider.value = 0.0f;
             }
         }
 
