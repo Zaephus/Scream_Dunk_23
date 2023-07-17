@@ -14,6 +14,7 @@ public abstract class StateRunner<T> : MonoBehaviour where T : StateRunner<T> {
         BaseState<T>[] baseStates = FindObjectsOfType<BaseState<T>>();
         foreach(BaseState<T> baseState in baseStates) {
             baseState.runner = GetComponent<T>();
+            baseState.OnEnd();
             states.Add(baseState.GetType(), baseState);
         }
     }
