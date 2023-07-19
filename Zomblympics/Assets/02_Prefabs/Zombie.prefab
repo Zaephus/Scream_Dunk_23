@@ -315,7 +315,7 @@ Transform:
   - {fileID: 4195001692641343137}
   - {fileID: 8824719775959233086}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3572175870209883361
 MonoBehaviour:
@@ -336,6 +336,7 @@ MonoBehaviour:
   maxAngularVelocity: 1500
   forceSlider: {fileID: 0}
   disc: {fileID: 3748797164385103045}
+  cameraController: {fileID: 0}
 --- !u!50 &4217751915699460036
 Rigidbody2D:
   serializedVersion: 4
@@ -463,7 +464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8afa37a7900c3144b0f264018f4988b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0.2
 --- !u!212 &6654078939870992769
 SpriteRenderer:
   m_ObjectHideFlags: 0

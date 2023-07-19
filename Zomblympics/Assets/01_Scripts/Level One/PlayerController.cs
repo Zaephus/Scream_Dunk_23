@@ -28,6 +28,9 @@ namespace LevelOne {
         [SerializeField]
         private DiscController disc;
 
+        [SerializeField]
+        private CameraController cameraController;
+
         private bool isReleased = false;
         
         private void Start() {
@@ -50,6 +53,8 @@ namespace LevelOne {
             Debug.Log(body.angularVelocity);
             disc.transform.parent = transform.parent;
             disc.Throw(body.angularVelocity * Mathf.Deg2Rad);
+
+            cameraController.StartFollowingDisc(disc);
 
             body.angularDrag = afterThrowAngularDrag;
         }
