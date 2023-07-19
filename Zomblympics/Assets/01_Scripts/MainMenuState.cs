@@ -18,8 +18,14 @@ public class MainMenuState : BaseState<GameManager> {
         mainMenu.SetActive(false);
     }
 
-    public void StartGame() {
-        runner.SwitchState(typeof(LevelOneState));
+    public void StartGame(int _level) {
+        if (_level == 1) {
+            runner.SwitchState(typeof(LevelOneState));
+        }
+
+        if (_level == 2) {
+            runner.SwitchState(typeof(LevelTwoState));
+        }
     }
 
 }
