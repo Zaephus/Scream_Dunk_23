@@ -14,31 +14,44 @@ namespace LevelOne {
         private float rotateForceModifier = 10.0f;
 
         [SerializeField]
-        private float releaseForce = 45.0f;
+        private float afterThrowAngularDrag;
+        [SerializeField]
+        private float minAngularVelocity;
+        [SerializeField]
+        private float maxAngularVelocity;
 
         [SerializeField]
         private Slider forceSlider;
 
         private Rigidbody2D body;
-        private FixedJoint2D joint;
+
+        [SerializeField]
+        private DiscController disc;
+
+        private bool isReleased = false;
         
         private void Start() {
             body = GetComponent<Rigidbody2D>();
-            joint = GetComponent<FixedJoint2D>();
-            joint.breakForce = releaseForce;
         }
 
         private void Update() {
-
-            if(joint != null && joint.isActiveAndEnabled) {
-                forceSlider.value = joint.reactionForce.magnitude / ((releaseForce / 7) * 8);
-                RotatePlayer();
+            if(!isReleased) {
+                if(Input.GetMouseButton(0)) {
+                    RotatePlayer();
+                }
+                if((Mathf.Abs(body.angularVelocity) >= minAngularVelocity && Input.GetMouseButtonUp(0)) || Mathf.Abs(body.angularVelocity) >= maxAngularVelocity) {
+                    isReleased = true;
+                    ReleaseDisc();
+                }
             }
+        }
 
-            if(Input.GetMouseButtonDown(0)) {
-                joint.enabled = false;
-                forceSlider.value = 0.0f;
-            }
+        private void ReleaseDisc() {
+            Debug.Log(body.angularVelocity);
+            disc.transform.parent = transform.parent;
+            disc.Throw(body.angularVelocity * Mathf.Deg2Rad);
+
+            body.angularDrag = afterThrowAngularDrag;
         }
 
         private void RotatePlayer()  {

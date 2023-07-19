@@ -131,6 +131,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1300711128018963285, guid: 891c793dbb7b68649b83a3596247d6e5, type: 3}
+      propertyPath: rotateSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300711128018963285, guid: 891c793dbb7b68649b83a3596247d6e5, type: 3}
+      propertyPath: rotateSpeedModifier
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7416935001048341562, guid: 891c793dbb7b68649b83a3596247d6e5, type: 3}
       propertyPath: m_Name
       value: Zomblympics
@@ -179,7 +187,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1697123020424819871, guid: 891c793dbb7b68649b83a3596247d6e5, type: 3}
+    - {fileID: 2540243338747366801, guid: 891c793dbb7b68649b83a3596247d6e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
