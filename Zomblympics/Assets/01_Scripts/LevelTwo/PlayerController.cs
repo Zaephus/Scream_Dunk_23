@@ -18,8 +18,9 @@ namespace LevelTwo {
         [Header("Components")]
         [SerializeField]
         private Rigidbody2D rb;
+
         [SerializeField]
-        private Animator animator;
+        public Animator animator;
         [SerializeField]
         public Camera cam;
         [SerializeField]
@@ -75,8 +76,8 @@ namespace LevelTwo {
             }
 
         }
-        private void Accelerate() {
-            movementSpeed += 0.001f;
+        public void Accelerate() {
+            movementSpeed += 0.1f;
         }
 
 

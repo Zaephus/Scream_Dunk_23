@@ -7,8 +7,11 @@ public class LevelTwoState : BaseState<GameManager> {
 
     [SerializeField]
     private GameObject level;
-    [SerializeField]
     private PlayerController player;
+    private GameObject spawnedLevel;
+    private HurdleManager hurdleManager;
+    [ReadOnly, SerializeField]
+    private bool startLevel = false;
 
     [Header("Settings")]
     [SerializeField]
@@ -17,7 +20,7 @@ public class LevelTwoState : BaseState<GameManager> {
     private Vector3 camVelocity = Vector3.zero;
 
     public override void OnStart() {
-        level.SetActive(true);
+        InstantiateLevel();
         StartCoroutine(LerpCamera());
     }
 
@@ -25,13 +28,34 @@ public class LevelTwoState : BaseState<GameManager> {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             runner.SwitchState(typeof(MainMenuState));
         }
+
+        if (startLevel) {
+            hurdleManager.OnUpdate(player);
+        }
     }
 
     public override void OnEnd() {
-        level.SetActive(false);
+        if (spawnedLevel != null) {
+            spawnedLevel?.SetActive(false);
+        }
+    }
+
+    private void InstantiateLevel() {
+        if (spawnedLevel == null) {
+            spawnedLevel = Instantiate(level);
+        }
+        else {
+            Destroy(spawnedLevel);
+            spawnedLevel = Instantiate(level);
+        }
+
+        player = spawnedLevel.GetComponentInChildren<PlayerController>();
+        hurdleManager = spawnedLevel.GetComponent<HurdleManager>();
+
     }
 
     private IEnumerator LerpCamera() {
+        yield return new WaitForSeconds(1);
 
         float elapsedTime = 0;
         Vector3 startPos = player.cam.transform.position;
@@ -49,9 +73,11 @@ public class LevelTwoState : BaseState<GameManager> {
 
         yield return new WaitForSeconds(3);
 
-        //TODO: Add visual timer
 
         player.canMove = true;
+        startLevel = true;
+
+        hurdleManager.InitializeSlider(player.transform.position);
 
         yield break;
     }
