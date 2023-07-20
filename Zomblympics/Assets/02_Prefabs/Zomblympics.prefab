@@ -205,7 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6037255f49c4464a8465e92b06624f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeedModifier: 1.35
+  followSpeedModifier: 1.2
+  zoomModifier: 0.1
+  beforeFollowWaitTime: 0.3
 --- !u!1 &8005040860680173207 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5111388672997548798, guid: 40c28f33661e6784a88022820f086f77, type: 3}

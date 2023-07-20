@@ -179,14 +179,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8559523624241757168, guid: 891c793dbb7b68649b83a3596247d6e5, type: 3}
-      propertyPath: followSpeedModifier
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8559523624241757168, guid: 891c793dbb7b68649b83a3596247d6e5, type: 3}
-      propertyPath: beforeFollowWaitTime
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

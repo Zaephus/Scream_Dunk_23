@@ -782,7 +782,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6037255f49c4464a8465e92b06624f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeedModifier: 1
+  followSpeedModifier: 1.2
+  zoomModifier: 0.2
+  beforeFollowWaitTime: 0.3
 --- !u!20 &6804530807353361388
 Camera:
   m_ObjectHideFlags: 0
@@ -1186,6 +1188,10 @@ PrefabInstance:
       propertyPath: forceSlider
       value: 
       objectReference: {fileID: 4086706295917777761}
+    - target: {fileID: 3572175870209883361, guid: 724572cbae0ce2a419ea2113f335db12, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 1600
+      objectReference: {fileID: 0}
     - target: {fileID: 8337239988205908210, guid: 724572cbae0ce2a419ea2113f335db12, type: 3}
       propertyPath: m_Name
       value: Zombie

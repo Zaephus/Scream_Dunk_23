@@ -22,8 +22,13 @@ namespace LevelOne {
 
         [SerializeField]
         private Slider forceSlider;
+        [SerializeField]
+        private float sliderTurnOffWaitTime;
 
         private Rigidbody2D body;
+
+        [SerializeField]
+        private Transform lowerArms;
 
         [SerializeField]
         private DiscController disc;
@@ -35,6 +40,7 @@ namespace LevelOne {
         
         private void Start() {
             body = GetComponent<Rigidbody2D>();
+            forceSlider.gameObject.SetActive(true);
         }
 
         private void Update() {
@@ -42,21 +48,41 @@ namespace LevelOne {
                 if(Input.GetMouseButton(0)) {
                     RotatePlayer();
                 }
-                if((Mathf.Abs(body.angularVelocity) >= minAngularVelocity && Input.GetMouseButtonUp(0)) || Mathf.Abs(body.angularVelocity) >= maxAngularVelocity) {
+
+                if((Mathf.Abs(body.angularVelocity) >= minAngularVelocity && Input.GetMouseButtonUp(0))) {
                     isReleased = true;
                     ReleaseDisc();
+                }
+                else if(Mathf.Abs(body.angularVelocity) >= maxAngularVelocity) {
+                    isReleased = true;
+                    LoseDisc();
                 }
             }
         }
 
         private void ReleaseDisc() {
-            Debug.Log(body.angularVelocity);
             disc.transform.parent = transform.parent;
             disc.Throw(body.angularVelocity * Mathf.Deg2Rad);
 
             cameraController.StartFollowingDisc(disc);
 
             body.angularDrag = afterThrowAngularDrag;
+
+            StartCoroutine(TurnOffSlider());
+        }
+
+        // When you turn too hard, your arms tear off.
+        private void LoseDisc() {
+            lowerArms.parent = disc.transform;
+
+            disc.transform.parent = transform.parent;
+            disc.Throw(body.angularVelocity * Mathf.Deg2Rad);
+
+            cameraController.StartFollowingDisc(disc);
+
+            body.angularDrag = afterThrowAngularDrag;
+
+            StartCoroutine(TurnOffSlider());
         }
 
         private void RotatePlayer()  {
@@ -68,6 +94,13 @@ namespace LevelOne {
 
             body.AddTorque(rateOfChange * rotateForceModifier * Time.deltaTime, ForceMode2D.Force);
 
+            forceSlider.value = (Mathf.Abs(body.angularVelocity) - minAngularVelocity) / (((maxAngularVelocity - minAngularVelocity) / 7.0f) * 7.2f);
+
+        }
+
+        private IEnumerator TurnOffSlider() {
+            yield return new WaitForSeconds(sliderTurnOffWaitTime);
+            forceSlider.gameObject.SetActive(false);
         }
         
     }
