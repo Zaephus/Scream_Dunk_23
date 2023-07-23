@@ -77,7 +77,7 @@ namespace LevelTwo {
 
         }
         public void Accelerate() {
-            movementSpeed += 0.1f;
+            movementSpeed += 0.3f;
         }
 
 

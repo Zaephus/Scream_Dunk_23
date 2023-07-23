@@ -44,6 +44,7 @@ public class HurdleManager : MonoBehaviour
 
     public void InitializeSlider(Vector2 _startPos) {
         progressBar.gameObject.SetActive(true);
+        progressBar.value = progressBar.maxValue;
         progressBar.maxValue = Vector2.Distance(_startPos, transform.position);
     }
 
@@ -64,7 +65,7 @@ public class HurdleManager : MonoBehaviour
     private IEnumerator DisplayEnd(PlayerController _player) {
         endIsReached = true;
         _player.animator.SetTrigger("Death");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         _player.canMove = false;
         progressBar.gameObject.SetActive(false);
         endMenu.SetActive(true);
@@ -74,10 +75,14 @@ public class HurdleManager : MonoBehaviour
     }
 
     public void ExitLevel() {
-        FindObjectOfType<LevelTwoState>().runner.SwitchState(typeof(MainMenuState));
+        Debug.Log("Exit");
+        FindAnyObjectByType<LevelTwoState>().StopCoroutine(FindAnyObjectByType<LevelTwoState>().lerp);
+        FindAnyObjectByType<GameManager>().SwitchState(typeof(MainMenuState));
     }
 
     public void RestartLevel() {
-        FindObjectOfType<LevelTwoState>().runner.SwitchState(typeof(LevelTwoState));
+        Debug.Log("Restart");
+        FindAnyObjectByType<LevelTwoState>().StopAllCoroutines();
+        FindAnyObjectByType<GameManager>().SwitchState(typeof(LevelTwoState));
     }
 }

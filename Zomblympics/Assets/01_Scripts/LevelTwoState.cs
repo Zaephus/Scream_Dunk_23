@@ -19,9 +19,11 @@ public class LevelTwoState : BaseState<GameManager> {
 
     private Vector3 camVelocity = Vector3.zero;
 
+    public Coroutine lerp;
+
     public override void OnStart() {
         InstantiateLevel();
-        StartCoroutine(LerpCamera());
+        lerp = StartCoroutine(LerpCamera());
     }
 
     public override void OnUpdate() {
@@ -46,6 +48,7 @@ public class LevelTwoState : BaseState<GameManager> {
         }
         else {
             Destroy(spawnedLevel);
+            Debug.Log("Destroyed");
             spawnedLevel = Instantiate(level);
         }
 
@@ -58,7 +61,7 @@ public class LevelTwoState : BaseState<GameManager> {
         yield return new WaitForSeconds(1);
 
         float elapsedTime = 0;
-        Vector3 startPos = player.cam.transform.position;
+        Vector3 startPos = new Vector3(662, 2.52f, -10) + player.transform.position;
 
         while (elapsedTime < smoothTime) {
             player.cam.transform.position = Vector3.Lerp(startPos, player.camPos.position, (elapsedTime/smoothTime));
@@ -71,15 +74,13 @@ public class LevelTwoState : BaseState<GameManager> {
 
         player.cam.transform.position = player.camPos.position;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
 
 
         player.canMove = true;
         startLevel = true;
 
         hurdleManager.InitializeSlider(player.transform.position);
-
-        yield break;
     }
 
 }
