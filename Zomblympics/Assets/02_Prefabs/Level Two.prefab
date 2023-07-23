@@ -2915,6 +2915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: End screen
       objectReference: {fileID: 0}
+    - target: {fileID: 1894180181006045520, guid: a57e4d8bca1aff34aa9e95c289f085d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6236125698828614685, guid: a57e4d8bca1aff34aa9e95c289f085d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
