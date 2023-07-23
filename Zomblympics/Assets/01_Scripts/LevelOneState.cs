@@ -6,10 +6,15 @@ using UnityEngine;
 public class LevelOneState : BaseState<GameManager> {
 
     [SerializeField]
-    private GameObject level;
+    private GameObject levelPrefab;
+    private LevelOneManager level;
 
     public override void OnStart() {
-        level.SetActive(true);
+        if(level != null) {
+            Destroy(level.gameObject);
+        }
+        level = Instantiate(levelPrefab).GetComponent<LevelOneManager>();
+        level.levelState = this;
     }
 
     public override void OnUpdate() {
@@ -19,7 +24,9 @@ public class LevelOneState : BaseState<GameManager> {
     }
 
     public override void OnEnd() {
-        level.SetActive(false);
+        if(level != null) {
+            Destroy(level.gameObject);
+        }
     }
     
 }
