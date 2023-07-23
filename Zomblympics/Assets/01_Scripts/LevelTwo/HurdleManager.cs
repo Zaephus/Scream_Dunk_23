@@ -75,15 +75,10 @@ public class HurdleManager : MonoBehaviour
     }
 
     public void ExitLevel() {
-        Debug.Log("Exit");
-        FindAnyObjectByType<LevelTwoState>().StopCoroutine(FindAnyObjectByType<LevelTwoState>().lerp);
         FindAnyObjectByType<GameManager>().SwitchState(typeof(MainMenuState));
     }
 
     public void RestartLevel() {
-        Debug.Log("Restart");
-        FindAnyObjectByType<LevelTwoState>().StopCoroutine(FindAnyObjectByType<LevelTwoState>().lerp);
-        FindAnyObjectByType<LevelTwoState>().startLevel = false;
         FindAnyObjectByType<GameManager>().SwitchState(typeof(LevelTwoState));
     }
 }

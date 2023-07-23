@@ -40,6 +40,10 @@ public class LevelTwoState : BaseState<GameManager> {
         if (spawnedLevel != null) {
             spawnedLevel?.SetActive(false);
         }
+        if(lerp != null) {
+            StopCoroutine(lerp);
+        }
+        startLevel = false;
     }
 
     private void InstantiateLevel() {
