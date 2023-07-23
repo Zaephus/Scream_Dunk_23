@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3335632518935578017}
   - component: {fileID: 3428832653222786972}
   - component: {fileID: 3132071507024586773}
+  - component: {fileID: 4732055715957842902}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -74,6 +75,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runner: {fileID: 0}
   level: {fileID: 8005040860680173207}
+--- !u!114 &4732055715957842902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882218887325131754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89a390c0da279d49af29e00c5f053f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runner: {fileID: 0}
+  level: {fileID: 6593671407497282307, guid: 34f9a490bbbcd744584c0bf858f8aa4c, type: 3}
+  startLevel: 0
+  smoothTime: 15
 --- !u!1 &7416935001048341562
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +133,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7689222892977416994}
     m_Modifications:
+    - target: {fileID: 3241873133535788486, guid: 40c28f33661e6784a88022820f086f77, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4494965592765501208, guid: 40c28f33661e6784a88022820f086f77, type: 3}
       propertyPath: cameraController
       value: 
@@ -230,9 +251,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7596711679612164695, guid: 6c15d9a61852c5c4e9c4bef16a0ca6b1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596711679612164695, guid: 6c15d9a61852c5c4e9c4bef16a0ca6b1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3428832653222786972}
+    - target: {fileID: 7596711679612164695, guid: 6c15d9a61852c5c4e9c4bef16a0ca6b1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8222235557613218658, guid: 6c15d9a61852c5c4e9c4bef16a0ca6b1, type: 3}
       propertyPath: m_RootOrder
       value: -1
