@@ -11,7 +11,7 @@ public class LevelTwoState : BaseState<GameManager> {
     private GameObject spawnedLevel;
     private HurdleManager hurdleManager;
     [ReadOnly, SerializeField]
-    private bool startLevel = false;
+    public bool startLevel = false;
 
     [Header("Settings")]
     [SerializeField]
